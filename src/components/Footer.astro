@@ -124,29 +124,39 @@ const currentYear = new Date().getFullYear();
       <!-- Contact Info Column -->
       <div class="space-y-3">
         <h4 class="text-sm font-semibold text-slate-100 uppercase tracking-wider">
-          {lang === 'es' ? 'Oficinas & Contacto' : 'Corporate Contact'}
+          {lang === 'es' ? 'Presencia & Contacto' : 'Offices & Contact'}
         </h4>
-        <div class="space-y-2.5 text-sm">
-          <p class="leading-relaxed">
-            Av. de las Américas 320, Altamira, 45160 Zapopan, Jalisco, México
-          </p>
-          <p>
-            <a href="https://maps.app.goo.gl/gw5AMAMp1Nse4J8M7" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 inline-flex items-center text-xs">
-              <span>{lang === 'es' ? 'Ver en Google Maps' : 'View on Google Maps'}</span>
-              <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-              </svg>
+        <div class="space-y-3 text-xs sm:text-sm">
+          <div>
+            <div class="font-semibold text-white flex items-center">
+              <span class="mr-1.5">🇲🇽</span> {lang === 'es' ? 'México (Sede)' : 'Mexico (HQ)'}
+            </div>
+            <p class="text-slate-400 text-xs leading-relaxed mt-0.5">
+              Av. de las Américas 320, Altamira, 45160 Zapopan, Jal.
+            </p>
+            <p class="mt-1">
+              <a href="tel:+523322334400" class="text-sky-400 hover:text-sky-300 transition-colors font-mono">
+                +52-33-2233-4400
+              </a>
+            </p>
+          </div>
+          <div class="pt-2 border-t border-slate-800/80">
+            <div class="font-semibold text-white flex items-center">
+              <span class="mr-1.5">🇨🇴</span> {lang === 'es' ? 'Colombia (Operaciones)' : 'Colombia (Operations)'}
+            </div>
+            <p class="text-slate-400 text-xs leading-relaxed mt-0.5">
+              {lang === 'es' ? 'Presencia local en Bogotá D.C.' : 'Local presence in Bogota D.C.'}
+            </p>
+            <p class="mt-1">
+              <a href="tel:+573134716622" class="text-cyan-400 hover:text-cyan-300 transition-colors font-mono">
+                +57-3134716622
+              </a>
+            </p>
+          </div>
+          <div class="pt-2 border-t border-slate-800/80">
+            <a href="mailto:contacto@kloudxp.com" class="text-slate-300 hover:text-sky-400 transition-colors flex items-center text-xs">
+              <span class="text-sky-400 mr-1.5">✉️</span> contacto@kloudxp.com
             </a>
-          </p>
-          <div class="pt-2 border-t border-slate-800 space-y-1">
-            <p class="flex items-center text-slate-300">
-              <span class="text-sky-400 mr-2 text-xs">TEL:</span>
-              <a href="tel:+523322334400" class="hover:text-sky-400 transition-colors">+52-33-2233-4400</a>
-            </p>
-            <p class="flex items-center text-slate-300">
-              <span class="text-sky-400 mr-2 text-xs">EMAIL:</span>
-              <a href="mailto:contacto@kloudxp.com" class="hover:text-sky-400 transition-colors">contacto@kloudxp.com</a>
-            </p>
           </div>
         </div>
       </div>

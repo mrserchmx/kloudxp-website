@@ -12,6 +12,7 @@ Sitio web corporativo de **KloudXP** ([kloudxp.com](https://kloudxp.com)), recon
 * **Seguridad Antibot:** [Cloudflare Turnstile](https://developers.cloudflare.com/turnstile/)
 * **Base de Datos (Opcional):** [Cloudflare D1](https://developers.cloudflare.com/d1/) (SQLite en el Edge)
 * **Alianzas Tecnológicas:** Partner Oficial **Proxmox VE / PBS** e Infraestructura en Centros de Datos **Tier III / IV**.
+* **Presencia Regional:** Operaciones locales en **Guadalajara, México** (+52-33-2233-4400) y **Bogotá, Colombia** (+57-3134716622).
 
 ---
 
@@ -25,10 +26,11 @@ Sitio web corporativo de **KloudXP** ([kloudxp.com](https://kloudxp.com)), recon
 │   └── favicon.png            # Favicon
 ├── src/
 │   ├── components/
-│   │   ├── Navbar.astro       # Menú sticky con selector ES/EN y teléfono
-│   │   ├── Footer.astro       # Footer corporativo con enlaces legales y SLA
+│   │   ├── Navbar.astro       # Menú sticky con selector ES/EN y teléfonos MX/CO
+│   │   ├── Footer.astro       # Footer corporativo con enlaces legales, sedes MX/CO y SLA
 │   │   ├── Hero.astro         # Hero section con monitor de nodos en tiempo real
 │   │   ├── ServiceCard.astro  # Tarjeta de servicios con ficha técnica
+│   │   ├── RegionalPresence.astro # Módulo de presencia local en México y Colombia
 │   │   ├── ClientLogos.astro  # Carrusel/grid de clientes destacados
 │   │   ├── Testimonials.astro # Testimonios de directores de TI y operaciones
 │   │   └── ContactForm.astro  # Formulario con protección Cloudflare Turnstile

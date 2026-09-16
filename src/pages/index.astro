@@ -4,6 +4,7 @@ import Hero from '../components/Hero.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import ClientLogos from '../components/ClientLogos.astro';
 import Testimonials from '../components/Testimonials.astro';
+import RegionalPresence from '../components/RegionalPresence.astro';
 
 const services = [
   {
@@ -173,6 +174,8 @@ const services = [
     </div>
   </section>
 
+  <!-- Regional Presence: Mexico and Colombia -->
+  <RegionalPresence lang="es" />
 
   <!-- Testimonials Section -->
   <Testimonials lang="es" />
@@ -196,11 +199,19 @@ const services = [
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
           </svg>
         </a>
+      </div>
+      <div class="flex flex-wrap justify-center items-center gap-3 pt-2">
         <a
           href="tel:+523322334400"
-          class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-4 text-base font-semibold text-slate-200 bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 rounded-xl transition-all"
+          class="inline-flex items-center justify-center px-5 py-3 text-xs sm:text-sm font-semibold text-slate-200 bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 rounded-xl transition-all"
         >
-          Llamar al +52-33-2233-4400
+          <span class="mr-2 text-base">🇲🇽</span> Llamar México: +52-33-2233-4400
+        </a>
+        <a
+          href="tel:+573134716622"
+          class="inline-flex items-center justify-center px-5 py-3 text-xs sm:text-sm font-semibold text-slate-200 bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 rounded-xl transition-all"
+        >
+          <span class="mr-2 text-base">🇨🇴</span> Llamar Colombia: +57-3134716622
         </a>
       </div>
     </div>
