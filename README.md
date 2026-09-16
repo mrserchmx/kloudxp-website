@@ -11,7 +11,7 @@ Sitio web corporativo de **KloudXP** ([kloudxp.com](https://kloudxp.com)), recon
 * **Alojamiento & Edge:** [Cloudflare Pages](https://pages.cloudflare.com/) / [Workers with Assets](https://developers.cloudflare.com/workers/)
 * **Seguridad Antibot:** [Cloudflare Turnstile](https://developers.cloudflare.com/turnstile/)
 * **Base de Datos (Opcional):** [Cloudflare D1](https://developers.cloudflare.com/d1/) (SQLite en el Edge)
-* **Alianzas Tecnológicas:** Partner Oficial **Proxmox VE / PBS** y Centros de Datos **HostDime**.
+* **Alianzas Tecnológicas:** Partner Oficial **Proxmox VE / PBS** e Infraestructura en Centros de Datos **Tier III / IV**.
 
 ---
 
@@ -20,7 +20,7 @@ Sitio web corporativo de **KloudXP** ([kloudxp.com](https://kloudxp.com)), recon
 ```text
 ├── public/
 │   ├── images/
-│   │   ├── partners/          # Logos Proxmox Official Partner y HostDime
+│   │   ├── partners/          # Logo Proxmox Official Partner
 │   │   └── clients/           # Logos Grupo Kino, Hartec, Triskelion, ASV, Blen, etc.
 │   └── favicon.png            # Favicon
 ├── src/
