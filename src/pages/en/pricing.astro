@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import QuoteCalculator from '../../components/QuoteCalculator.astro';
 
 const comparisonsEn = [
   { feature: 'Data Egress Bandwidth Fees', hyperscalers: 'Expensive, unpredictable fees per gigabyte transferred out', kloudxp: 'Generous multi-terabyte traffic allocations included' },
@@ -12,7 +11,7 @@ const comparisonsEn = [
 
 <Layout
   title="Pricing & Planning Guide | KloudXP"
-  description="Transparent pricing, interactive cloud resource calculator, and infrastructure planning guide."
+  description="Transparent pricing and infrastructure planning guide."
   lang="en"
 >
   <section class="py-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800">
@@ -21,17 +20,11 @@ const comparisonsEn = [
         Transparent Pricing
       </span>
       <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
-        Cloud Planning & Estimator Guide
+        Cloud Planning & Pricing Guide
       </h1>
       <p class="text-slate-400 text-lg max-w-3xl mx-auto">
-        Building trust through predictable, transparent pricing and zero hidden fees. Right-size your compute and storage with confidence.
+        Building trust through predictable, transparent pricing and zero hidden fees.
       </p>
-    </div>
-  </section>
-
-  <section class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <QuoteCalculator lang="en" />
     </div>
   </section>
 

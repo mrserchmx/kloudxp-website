@@ -29,7 +29,6 @@ Sitio web corporativo de **KloudXP** ([kloudxp.com](https://kloudxp.com)), recon
 │   │   ├── Footer.astro       # Footer corporativo con enlaces legales y SLA
 │   │   ├── Hero.astro         # Hero section con monitor de nodos en tiempo real
 │   │   ├── ServiceCard.astro  # Tarjeta de servicios con ficha técnica
-│   │   ├── QuoteCalculator.astro # Calculador interactivo de recursos cloud
 │   │   ├── ClientLogos.astro  # Carrusel/grid de clientes destacados
 │   │   ├── Testimonials.astro # Testimonios de directores de TI y operaciones
 │   │   └── ContactForm.astro  # Formulario con protección Cloudflare Turnstile

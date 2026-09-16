@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import QuoteCalculator from '../components/QuoteCalculator.astro';
 
 const comparisons = [
   { feature: 'Tarifas por transferencia (Data Egress)', hyperscalers: 'Cargos exorbitantes e impredecibles por cada GB transferido', kloudxp: 'Tráfico masivo incluido en todos los planes sin sorpresas' },
@@ -13,7 +12,7 @@ const comparisons = [
 
 <Layout
   title="Guía de Planificación de Costos & Precios | KloudXP"
-  description="Tarifas transparentes, calculador interactivo de recursos cloud y guía de planificación estratégica para infraestructura en la nube."
+  description="Tarifas transparentes y guía de planificación estratégica para infraestructura en la nube."
   lang="es"
 >
   <!-- Header Banner -->
@@ -26,15 +25,8 @@ const comparisons = [
         Guía de Planificación y Cotización Cloud
       </h1>
       <p class="text-slate-400 text-lg max-w-3xl mx-auto">
-        Desarrollamos relaciones de confianza con tarifas transparentes y sin complicaciones. Dimensione sus servidores y calcule su presupuesto sin costes ocultos.
+        Desarrollamos relaciones de confianza con tarifas transparentes y sin complicaciones. Planes predecibles y sin costes ocultos.
       </p>
-    </div>
-  </section>
-
-  <!-- Interactive Estimator -->
-  <section class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <QuoteCalculator lang="es" />
     </div>
   </section>
 
