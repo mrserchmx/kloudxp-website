@@ -1,0 +1,162 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ClientLogos from '../components/ClientLogos.astro';
+
+const steps = [
+  {
+    step: '01',
+    title: 'Obsesión por el Cliente',
+    desc: 'Comenzamos con una inmersión completa en sus objetivos de negocio, aplicaciones críticas y puntos de dolor actuales para construir una solución que resuelva problemas reales.'
+  },
+  {
+    step: '02',
+    title: 'Planeación & Diseño',
+    desc: 'Nuestros arquitectos diseñan la topología ideal de cómputo, almacenamiento redundante y seguridad de red, eliminando puntos únicos de falla (SPOF).'
+  },
+  {
+    step: '03',
+    title: 'Implementación Optimizada',
+    desc: 'Ejecutamos la migración de datos y máquinas virtuales con procedimientos rigurosos de prueba para garantizar una transición suave y sin caídas de servicio.'
+  },
+  {
+    step: '04',
+    title: 'Resultados & Soporte 24/7',
+    desc: 'Monitoreamos proactivamente la salud de su infraestructura día y noche, asegurando tiempos de respuesta inmediatos y asesoría técnica continua.'
+  }
+];
+
+const pillars = [
+  { title: 'Retorno de Inversión (ROI)', desc: 'Reduzca drásticamente los gastos recurrentes de nube pública eliminando tarifas abusivas de egress y licenciamientos excesivos.' },
+  { title: 'Privacidad & Soberanía', desc: 'Usted mantiene el control y la propiedad absoluta de sus datos, sin algoritmos externos inspeccionando su información.' },
+  { title: 'Normatividad & Cumplimiento', desc: 'Infraestructura alineada a las mejores prácticas de seguridad, protección de datos personales y certificaciones internacionales.' },
+  { title: 'Consolidación de Cargas', desc: 'Unifique servidores dispersos en clústeres de alta densidad energética y mayor eficiencia operativa.' },
+  { title: 'Control Total sin Ataduras', desc: 'Basado en tecnología abierta empresarial como Proxmox VE, evitando el secuestro de tecnología o vendor lock-in.' },
+  { title: 'Rendimiento Superior', desc: 'Hardware de última generación con procesadores AMD EPYC / Intel Xeon y almacenamiento 100% All-Flash NVMe.' }
+];
+---
+
+<Layout
+  title="¿Quiénes Somos? | KloudXP"
+  description="Conozca a Kloud Xperts: sus socios estratégicos en infraestructura en la nube, virtualización dedicada y continuidad operativa."
+  lang="es"
+>
+  <!-- Hero Section -->
+  <section class="py-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <span class="text-xs font-mono uppercase tracking-widest text-sky-400 bg-sky-950/60 px-3.5 py-1 rounded-full border border-sky-800/60">
+        Nuestra Misión
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+        Socios Estratégicos para su Transformación Digital
+      </h1>
+      <p class="text-slate-400 text-lg max-w-3xl mx-auto leading-relaxed">
+        Construimos y operamos infraestructuras en la nube escalables, seguras y altamente confiables para empresas que no pueden permitirse caídas en sus operaciones.
+      </p>
+    </div>
+  </section>
+
+  <!-- Story & Values -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-6 space-y-6">
+          <h2 class="text-3xl font-extrabold text-white">
+            Estrategia, Diseño e Impacto Tecnológico
+          </h2>
+          <p class="text-slate-300 text-base leading-relaxed">
+            Estamos estratégicamente posicionados para atender a empresas de cualquier tamaño y sector en México y Norteamérica. Contamos con una infraestructura de servidores de alta disponibilidad distribuida globalmente y centros de datos de clase mundial.
+          </p>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            A diferencia de los proveedores tradicionales donde usted es sólo un número de cuenta, en KloudXP asignamos ingenieros especializados dedicados a su cuenta que conocen a detalle la topología de sus aplicaciones y responden en minutos.
+          </p>
+          <div class="pt-2 flex items-center space-x-6 text-sm text-sky-400 font-semibold">
+            <div>✓ Ingenieros Certificados</div>
+            <div>✓ Soporte 100% en Español</div>
+            <div>✓ Enfoque Proactivo</div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 bg-slate-900/80 border border-slate-800 rounded-3xl p-8 space-y-6 shadow-xl">
+          <h3 class="text-xl font-bold text-white border-b border-slate-800 pb-3">
+            Nuestros Pilares de Valor
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {pillars.map((p) => (
+              <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-800/80 space-y-1">
+                <div class="text-xs font-bold text-sky-400">{p.title}</div>
+                <div class="text-[11px] text-slate-400 leading-snug">{p.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4-Step Process Section -->
+  <section class="py-20 bg-slate-950/80 border-y border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <span class="text-xs font-mono uppercase tracking-widest text-cyan-400 bg-cyan-950/60 px-3.5 py-1 rounded-full border border-cyan-800/60">
+          Metodología Comprobada
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Un Proceso Personalizado es la Fundación de Todo
+        </h2>
+        <p class="text-slate-400 text-sm">
+          Acompañamos a su equipo de TI en cada fase del ciclo de vida de la infraestructura.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {steps.map((item) => (
+          <div class="bg-slate-900/60 border border-slate-800/90 rounded-2xl p-6 relative flex flex-col justify-between hover:border-sky-500/40 transition-all group">
+            <div class="space-y-3">
+              <div class="text-3xl font-black font-mono text-sky-500/40 group-hover:text-sky-400 transition-colors">
+                {item.step}
+              </div>
+              <h3 class="text-lg font-bold text-white group-hover:text-sky-300 transition-colors">
+                {item.title}
+              </h3>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                {item.desc}
+              </p>
+            </div>
+            <div class="pt-4 mt-4 border-t border-slate-800/60 text-[11px] text-sky-400 font-semibold">
+              Fase {item.step} del Protocolo
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Strategic Partners -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white">Alianzas que Garantizan su Éxito</h2>
+        <p class="text-slate-400 text-sm mt-2">Tecnología de virtualización líder y centros de datos de nivel mundial.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="bg-slate-900/70 border border-slate-800 p-8 rounded-2xl flex flex-col items-center text-center space-y-4">
+          <img src="/images/partners/proxmox-partner.svg" alt="Proxmox Partner" class="h-14 w-auto object-contain" />
+          <h3 class="text-lg font-bold text-white">Proxmox Official Partner</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Somos socios certificados oficiales de Proxmox en México y Latinoamérica. Diseñamos clústeres redundantes con soporte directo del fabricante para empresas con requerimientos de alta criticidad.
+          </p>
+        </div>
+        <div class="bg-slate-900/70 border border-slate-800 p-8 rounded-2xl flex flex-col items-center text-center space-y-4">
+          <img src="/images/partners/hostdime.webp" alt="HostDime Data Centers" class="h-12 w-auto object-contain brightness-150 contrast-125" />
+          <h3 class="text-lg font-bold text-white">HostDime Global Data Centers</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Infraestructura física alojada en centros de datos certificados Tier III y Tier IV en Guadalajara (Jalisco) y Estados Unidos, con redundancia eléctrica 2N y múltiples enlaces carrier-neutral.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Logos Banner -->
+  <ClientLogos lang="es" />
+</Layout>

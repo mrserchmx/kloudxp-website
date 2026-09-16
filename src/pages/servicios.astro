@@ -1,0 +1,234 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const servicesDetail = [
+  {
+    id: 'nube-privada',
+    title: 'Nube Privada Dedicada',
+    subtitle: 'Control total, rendimiento predecible y máxima seguridad en entornos 100% aislados',
+    badge: 'Proxmox Official Partner',
+    desc: 'Nuestra solución de Nube Privada Hospedada le ofrece la potencia, flexibilidad y escalabilidad de la nube con la seguridad y el aislamiento de un entorno dedicado en hardware de grado empresarial.',
+    highlights: [
+      { title: 'Personalización Completa', desc: 'Diseñamos la combinación exacta de CPU, memoria RAM ECC y almacenamiento que sus aplicaciones demandan.' },
+      { title: 'Seguridad Avanzada & Aislamiento', desc: 'Sin vecinos ruidosos ni recursos compartidos. Todo el procesamiento y almacenamiento es de su uso exclusivo.' },
+      { title: 'Rendimiento Optimizado', desc: 'Hipervisores Proxmox VE con almacenamiento Ceph All-Flash NVMe para latencias mínimas sostenidas.' },
+      { title: 'Control Exclusivo de Hipervisor', desc: 'Acceso a la consola de administración completa, API de automatización y orquestación con Terraform o Ansible.' }
+    ],
+    techSpecs: [
+      'Procesadores AMD EPYC™ y Intel® Xeon® Scalable',
+      'Memoria DDR4/DDR5 Registered ECC',
+      'Red dedicada 10Gbps / 25Gbps redundante',
+      'Disponibilidad garantizada por contrato SLA 99.99%'
+    ]
+  },
+  {
+    id: 'nube-publica',
+    title: 'Nube Pública para Máquinas Virtuales',
+    subtitle: 'Flexibilidad y escalabilidad inmediata con costos mensuales predecibles',
+    badge: 'Instancias Elásticas',
+    desc: 'Despliegue y administre máquinas virtuales KVM de alto rendimiento en cuestión de segundos. Escale recursos horizontal y verticalmente sin fricciones y sin sorpresas en su facturación.',
+    highlights: [
+      { title: 'Flexibilidad & Escalabilidad', desc: 'Ajuste vCPUs, RAM y almacenamiento sobre la marcha para responder a picos de demanda estacional.' },
+      { title: 'Acceso Global & Baja Latencia', desc: 'Centros de datos estratégicamente interconectados a los principales carriers y puntos de intercambio en México y EE.UU.' },
+      { title: 'Optimización de Costos', desc: 'Tarifas fijas transparentes en pesos mexicanos o dólares sin penalizaciones por tráfico de egress inesperado.' },
+      { title: 'Automatización de Tareas', desc: 'Soporte para plantillas cloud-init, snapshots programados y redes privadas virtuales aisladas (VPC).' }
+    ],
+    techSpecs: [
+      'Virtualización KVM con aislamiento a nivel de kernel',
+      'Almacenamiento NVMe local o distribuido de alta velocidad',
+      'IPs dedicadas IPv4 y conectividad nativa IPv6',
+      'Monitoreo continuo de salud y recursos de la instancia'
+    ]
+  },
+  {
+    id: 'storage',
+    title: 'File & Block Storage NVMe',
+    badge: 'Alta Concurrencia',
+    desc: 'Almacenamiento empresarial escalable de ultra baja latencia diseñado para bases de datos transaccionales, entornos analíticos, clusters Kubernetes y compartición de archivos corporativos.',
+    highlights: [
+      { title: 'Alto Rendimiento & Baja Latencia', desc: 'Discos All-Flash NVMe de grado datacenter que entregan más de 100,000 IOPS por volumen.' },
+      { title: 'Compatibilidad Multiprotocolo', desc: 'Soporte nativo para NFSv3/v4, SMB/CIFS e iSCSI para integrarse sin cambios a cualquier sistema operativo.' },
+      { title: 'Escalabilidad Automática', desc: 'Aumente el tamaño de sus volúmenes en caliente sin necesidad de reiniciar sus servidores o aplicaciones.' },
+      { title: 'Protección de Datos Continua', desc: 'Snapshots instantáneos periódicos y replicación remota automática para prevención de pérdidas.' }
+    ],
+    techSpecs: [
+      'Throughput de hasta 2.5 GB/s por volumen',
+      'Cifrado AES-256 en reposo y en tránsito',
+      'Integración con sistemas operativos Linux, Windows Server y BSD',
+      'Soporte para clusters de bases de datos PostgreSQL, MySQL, SQL Server y Oracle'
+    ]
+  },
+  {
+    id: 'proteccion-datos',
+    title: 'Protección de Datos & DRP',
+    badge: 'Proxmox Backup Server',
+    desc: 'Garantice la continuidad operativa de su empresa frente a desastres naturales, fallos de hardware o ataques de ransomware mediante respaldos inmutables y planes de contingencia probados.',
+    highlights: [
+      { title: 'Respaldos Inmutables', desc: 'Copias de seguridad que no pueden ser modificadas ni eliminadas, bloqueando el impacto de ataques de ransomware.' },
+      { title: 'Deduplicación Inteligente', desc: 'Ahorro de hasta un 85% de espacio de almacenamiento al respaldar únicamente los bloques de datos modificados.' },
+      { title: 'Restauración Granular Instantánea', desc: 'Recupere un solo archivo accidentalmente borrado o encienda una máquina virtual completa en segundos.' },
+      { title: 'RTO y RPO Cercanos a Cero', desc: 'Minimice la pérdida de transacciones y restablezca sus operaciones críticas casi de inmediato.' }
+    ],
+    techSpecs: [
+      'Cifrado del lado del cliente antes de transmitir los datos',
+      'Verificación automática de integridad de los respaldos',
+      'Regla 3-2-1 con copias fuera de sitio (Offsite Replication)',
+      'Simulacros periódicos de recuperación ante desastres asistidos'
+    ]
+  },
+  {
+    id: 'colocation',
+    title: 'Co-locación de Servidores (Colocation)',
+    badge: 'HostDime Tier III/IV',
+    desc: 'Hospede sus propios servidores y equipos de telecomunicaciones en instalaciones de clase mundial. Reduzca drásticamente sus costos de infraestructura física, energía y enfriamiento.',
+    highlights: [
+      { title: 'Espacio Seguro y Dedicado', desc: 'Gabinetes privados de 42U, medios gabinetes o unidades individuales en salas limpias con jaulas de seguridad.' },
+      { title: 'Redundancia Energética 2N', desc: 'Suministro eléctrico ininterrumpido con sistemas UPS de grado industrial y generadores de respaldo.' },
+      { title: 'Conectividad de Alta Capacidad', desc: 'Acceso directo a múltiples proveedores de fibra óptica (Carrier Neutral) y enlaces BGP redundantes.' },
+      { title: 'Seguridad Física Extrema', desc: 'Acceso biométrico multifactor, videovigilancia CCTV 24/7 y personal de seguridad presencial los 365 días.' }
+    ],
+    techSpecs: [
+      'Data Centers en Guadalajara (Jalisco), Querétaro y Orlando (Florida)',
+      'Certificaciones ISO 27001, SOC 2 Type II y PCI-DSS',
+      'Soporte manos remotas (Remote Hands) disponible 24/7',
+      'Alimentación con fuentes duales A + B por rack'
+    ]
+  },
+  {
+    id: 'profesionales',
+    title: 'Servicios Profesionales & Soporte 24/7',
+    badge: 'Ingeniería Especializada',
+    desc: 'Un equipo de ingenieros con años de experiencia en arquitectura cloud, sistemas operativos y redes, dedicado a potenciar las capacidades tecnológicas de su organización.',
+    highlights: [
+      { title: 'Asesoría y Arquitectura Cloud', desc: 'Diseñamos la infraestructura ideal analizando sus cargas de trabajo, dependencias y metas de negocio.' },
+      { title: 'Migración Asistida Sin Caídas', desc: 'Planificamos y ejecutamos la migración desde VMware, Hyper-V, AWS o servidores físicos a KloudXP sin tiempo de inactividad.' },
+      { title: 'Optimización Continua de Costos', desc: 'Revisión periódica de consumos para identificar cuellos de botella y maximizar el rendimiento por dólar invertido.' },
+      { title: 'Soporte Técnico de Nivel 3 24/7', desc: 'Atención directa de ingenieros expertos sin pasar por contestadoras automatizadas ni operadores de primer nivel.' }
+    ],
+    techSpecs: [
+      'Tiempos de respuesta para incidentes críticos < 15 minutos',
+      'Monitoreo proactivo de métricas vía Zabbix / Grafana / Prometheus',
+      'Gestión de parches de seguridad y hardening de hipervisores',
+      'Capacitación y transferencia de conocimiento a su equipo interno'
+    ]
+  }
+];
+---
+
+<Layout
+  title="Servicios de Infraestructura en la Nube | KloudXP"
+  description="Explore nuestro portafolio de Nube Privada Dedicada con Proxmox VE, Nube Pública, Almacenamiento NVMe, Protección de Datos y Colocation en México."
+  lang="es"
+>
+  <!-- Header Banner -->
+  <section class="py-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <span class="text-xs font-mono uppercase tracking-widest text-sky-400 bg-sky-950/60 px-3.5 py-1 rounded-full border border-sky-800/60">
+        Soluciones Tecnológicas
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+        Servicios de Infraestructura Cloud de Alta Disponibilidad
+      </h1>
+      <p class="text-slate-400 text-lg max-w-3xl mx-auto">
+        Diseñamos arquitecturas en la nube a la medida de su empresa para garantizar la continuidad de sus operaciones, la seguridad de sus datos y un retorno de inversión real.
+      </p>
+    </div>
+  </section>
+
+  <!-- Detailed Services Sections -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-24">
+    {servicesDetail.map((service, index) => (
+      <section id={service.id} class="scroll-mt-28">
+        <div class={`grid grid-cols-1 lg:grid-cols-12 gap-10 items-start ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+          <!-- Left Info -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center space-x-2 bg-sky-950/70 border border-sky-800/60 px-3 py-1 rounded-full text-xs font-semibold text-sky-300">
+              <span>{service.badge}</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+              {service.title}
+            </h2>
+            <p class="text-lg text-sky-400 font-medium">
+              {service.subtitle}
+            </p>
+            <p class="text-slate-300 text-base leading-relaxed">
+              {service.desc}
+            </p>
+
+            <!-- Grid of 4 highlights -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+              {service.highlights.map((h) => (
+                <div class="p-4 bg-slate-900/60 border border-slate-800 rounded-xl space-y-1.5">
+                  <h3 class="text-sm font-bold text-white flex items-center">
+                    <span class="w-1.5 h-1.5 rounded-full bg-sky-400 mr-2"></span>
+                    {h.title}
+                  </h3>
+                  <p class="text-xs text-slate-400 leading-relaxed">
+                    {h.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div class="pt-4 flex items-center space-x-4">
+              <a
+                href={`/precios?servicio=${service.id}`}
+                class="inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-white bg-sky-600 hover:bg-sky-500 rounded-xl shadow-lg transition-colors cursor-pointer"
+              >
+                Cotizar esta Solución
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+              </a>
+              <a
+                href="/contacto"
+                class="inline-flex items-center text-sm font-semibold text-slate-300 hover:text-white transition-colors"
+              >
+                Consultar con un Ingeniero
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Specs Card -->
+          <div class="lg:col-span-5 bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+            <h3 class="text-xs font-mono uppercase tracking-wider text-slate-400 border-b border-slate-800 pb-3">
+              Ficha Técnica & Capacidades
+            </h3>
+            <ul class="space-y-3 font-mono text-xs">
+              {service.techSpecs.map((spec) => (
+                <li class="flex items-start text-slate-300">
+                  <svg class="w-4 h-4 text-emerald-400 mr-2.5 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  <span>{spec}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="pt-4 border-t border-slate-800/80 bg-slate-950/60 p-4 rounded-xl space-y-2 text-xs">
+              <div class="text-slate-400">Compromiso de Disponibilidad:</div>
+              <div class="text-emerald-400 font-bold text-sm">99.99% Uptime garantizado por SLA</div>
+              <div class="text-slate-500 text-[11px]">Respaldo formal contractual con penalizaciones por incumplimiento.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <!-- Bottom CTA -->
+  <section class="py-16 bg-slate-950 border-t border-slate-800 text-center">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <h2 class="text-3xl font-extrabold text-white">¿Desea una arquitectura personalizada para su empresa?</h2>
+      <p class="text-slate-400 text-sm max-w-2xl mx-auto">
+        Nuestros arquitectos de soluciones analizan sus requerimientos y le diseñan un esquema a la medida con costos predecibles.
+      </p>
+      <a
+        href="/contacto"
+        class="inline-flex items-center justify-center px-8 py-3.5 text-sm font-bold text-white bg-gradient-to-r from-sky-600 to-cyan-500 hover:from-sky-500 hover:to-cyan-400 rounded-xl shadow-lg shadow-sky-500/20 transition-all cursor-pointer"
+      >
+        Agendar una Sesión de Arquitectura Gratuita
+      </a>
+    </div>
+  </section>
+</Layout>

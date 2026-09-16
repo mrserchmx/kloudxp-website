@@ -1,0 +1,81 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const departmentsEn = [
+  { title: 'New Inquiries & Sales', email: 'ventas@kloudxp.com', desc: 'Commercial advisory, capacity planning, and customized proposals.' },
+  { title: '24/7 Technical Support', email: 'soporte@kloudxp.com', desc: 'Operational incident resolution and telemetry monitoring.' },
+  { title: 'General Administration', email: 'contacto@kloudxp.com', desc: 'Corporate communication and strategic alliances.' },
+  { title: 'Careers & Talent', email: 'carreras@kloudxp.com', desc: 'Join our cloud infrastructure and DevOps engineering team.' }
+];
+---
+
+<Layout
+  title="Contact Us | KloudXP"
+  description="Get in touch with KloudXP engineers. Direct phone +52-33-2233-4400, department emails, and corporate office in Zapopan, Jalisco."
+  lang="en"
+>
+  <section class="py-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <span class="text-xs font-mono uppercase tracking-widest text-sky-400 bg-sky-950/60 px-3.5 py-1 rounded-full border border-sky-800/60">
+        Direct Communication
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+        Need a Trusted Technology Partner? Let's Talk.
+      </h1>
+      <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+        Ready to answer your architectural questions, migration planning, or 24/7 infrastructure support needs.
+      </p>
+    </div>
+  </section>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <div class="lg:col-span-7 space-y-6">
+        <div>
+          <h2 class="text-2xl font-bold text-white">Send Us a Message</h2>
+          <p class="text-slate-400 text-sm mt-1">
+            Complete the form below and a solutions engineer will be in touch within 24 hours.
+          </p>
+        </div>
+        <ContactForm lang="en" type="contact" />
+      </div>
+
+      <div class="lg:col-span-5 space-y-8">
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+          <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-3">Corporate Office</h3>
+          <div class="space-y-4 text-sm">
+            <div>
+              <div class="text-xs text-slate-400">Phone Support</div>
+              <a href="tel:+523322334400" class="text-base font-bold text-white hover:text-sky-400 transition-colors">+52-33-2233-4400</a>
+            </div>
+            <div>
+              <div class="text-xs text-slate-400">Corporate Email</div>
+              <a href="mailto:contacto@kloudxp.com" class="text-base font-bold text-white hover:text-sky-400 transition-colors">contacto@kloudxp.com</a>
+            </div>
+            <div>
+              <div class="text-xs text-slate-400">Headquarters Address</div>
+              <p class="text-slate-200 text-xs sm:text-sm mt-0.5">Av. de las Américas 320, Altamira, 45160 Zapopan, Jalisco, Mexico</p>
+              <a href="https://maps.app.goo.gl/gw5AMAMp1Nse4J8M7" target="_blank" rel="noopener noreferrer" class="text-xs text-sky-400 hover:text-sky-300 font-semibold inline-flex items-center mt-1.5">
+                Open in Google Maps ↗
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <h3 class="text-xs font-mono uppercase tracking-wider text-slate-400">Department Emails</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {departmentsEn.map((d) => (
+              <div class="p-3.5 bg-slate-900/60 border border-slate-800 rounded-xl space-y-1">
+                <div class="text-xs font-bold text-white">{d.title}</div>
+                <a href={`mailto:${d.email}`} class="text-xs text-sky-400 hover:text-sky-300 font-mono block">{d.email}</a>
+                <div class="text-[10px] text-slate-500">{d.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

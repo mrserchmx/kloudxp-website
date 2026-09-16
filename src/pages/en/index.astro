@@ -1,0 +1,156 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import ClientLogos from '../../components/ClientLogos.astro';
+import Testimonials from '../../components/Testimonials.astro';
+import QuoteCalculator from '../../components/QuoteCalculator.astro';
+
+const servicesEn = [
+  {
+    title: 'Dedicated Private Cloud',
+    badge: 'Official Proxmox Partner',
+    description: 'Isolated, single-tenant virtualization infrastructure with guaranteed enterprise hardware, Ceph high availability, and complete hypervisor control.',
+    features: [
+      'Dedicated Proxmox VE High-Availability (HA) clusters',
+      'All-Flash NVMe Ceph / ZFS hyperconverged storage',
+      'Strict data sovereignty and regulatory compliance',
+      'Full root access, Terraform and Ansible API automation'
+    ],
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>`,
+    href: '/en/services#nube-privada'
+  },
+  {
+    title: 'Public Cloud for Virtual Machines',
+    badge: 'Elastic Scale',
+    description: 'On-demand KVM cloud compute for dynamic workloads. Spin up instances in seconds with predictable billing and low-latency redundant interconnects.',
+    features: [
+      'Instant horizontal and vertical resource scaling',
+      'Load balancing and isolated Virtual Private Clouds (VPC)',
+      'Transparent flat pricing with zero egress fee surprises',
+      'Redundant multi-carrier BGP network with DDoS mitigation'
+    ],
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"/></svg>`,
+    href: '/en/services#nube-publica'
+  },
+  {
+    title: 'File & Block Storage NVMe',
+    badge: 'Ultra Low Latency',
+    description: 'High-throughput enterprise storage for databases, analytics pipelines, Kubernetes clusters, and shared file repositories with multi-protocol support.',
+    features: [
+      '100,000+ IOPS per volume with enterprise All-Flash NVMe',
+      'Native support for NFSv3/v4, SMB/CIFS, and iSCSI protocols',
+      'Sub-second block-level snapshots with zero performance hit',
+      'End-to-end AES-256 encryption at rest and in transit'
+    ],
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>`,
+    href: '/en/services#storage'
+  },
+  {
+    title: 'Data Protection & DRP',
+    badge: 'Anti-Ransomware',
+    description: 'Advanced business continuity and disaster recovery solutions powered by Proxmox Backup Server (PBS). Immutable backups and near-zero RTO.',
+    features: [
+      'Immutable backup snapshots impervious to ransomware',
+      'Block-level deduplication reducing storage footprints up to 85%',
+      'Granular single-file recovery or full VM instant boot',
+      'Near-zero RTO and RPO for mission-critical applications'
+    ],
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
+    href: '/en/services#proteccion-datos'
+  },
+  {
+    title: 'Server Colocation (Housing)',
+    badge: 'HostDime Data Centers',
+    description: 'Secure, reliable data center space for your physical hardware in world-class Tier III/IV facilities in Guadalajara, Mexico and the United States.',
+    features: [
+      'Full 42U cabinets, half racks, or single unit rackspace',
+      '2N dual power paths with industrial UPS and diesel generators',
+      'Biometric access control, 24/7 CCTV, and locked security cages',
+      'Direct carrier-neutral fiber interconnects and IXP peering'
+    ],
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>`,
+    href: '/en/services#colocation'
+  },
+  {
+    title: 'Professional Services & 24/7 Support',
+    badge: 'Senior Engineering',
+    description: 'Hands-on architectural guidance, zero-downtime infrastructure migrations, performance tuning, and 24/7 proactive monitoring by senior engineers.',
+    features: [
+      'Certified Proxmox, Linux, and network engineers on call 24/7',
+      'Zero-downtime live migration from VMware, Hyper-V, or AWS',
+      'Cost optimization audits and right-sizing analysis',
+      'Proactive monitoring of telemetry, metrics, and security'
+    ],
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>`,
+    href: '/en/services#profesionales'
+  }
+];
+---
+
+<Layout
+  title="High-Performance Cloud Infrastructure | KloudXP"
+  description="Official Proxmox VE partner providing Dedicated Private Cloud, Public Cloud VMs, NVMe Storage, and Colocation in Mexico and North America."
+  lang="en"
+>
+  <Hero lang="en" />
+  <ClientLogos lang="en" />
+
+  <section id="services" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <span class="text-xs font-mono uppercase tracking-widest text-sky-400 bg-sky-950/60 px-3.5 py-1 rounded-full border border-sky-800/60">
+          Solutions Portfolio
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Enterprise Infrastructure Engineered to Scale
+        </h2>
+        <p class="text-slate-400 text-base">
+          Delivering the ideal balance between raw performance, compliance, and cost efficiency with 24/7 human engineering support.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {servicesEn.map((s) => (
+          <ServiceCard
+            title={s.title}
+            badge={s.badge}
+            description={s.description}
+            features={s.features}
+            icon={s.icon}
+            href={s.href}
+            lang="en"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <QuoteCalculator lang="en" />
+    </div>
+  </section>
+
+  <Testimonials lang="en" />
+
+  <!-- CTA Banner -->
+  <section class="py-20 relative overflow-hidden bg-gradient-to-r from-sky-950 via-slate-900 to-slate-950 border-t border-slate-800">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 relative z-10">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+        Ready to Optimize Your Infrastructure with KloudXP?
+      </h2>
+      <p class="text-slate-300 text-base max-w-2xl mx-auto leading-relaxed">
+        Our solutions architects will analyze your existing environment and deliver a zero-downtime migration blueprint.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
+        <a
+          href="/en/contact"
+          class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-gradient-to-r from-sky-600 to-cyan-500 hover:from-sky-500 hover:to-cyan-400 rounded-xl shadow-xl shadow-sky-500/25 transition-all transform hover:-translate-y-0.5 cursor-pointer"
+        >
+          Talk to a Solutions Architect
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

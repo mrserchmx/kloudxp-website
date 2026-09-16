@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<Layout
+  title="Reporte de Abuso de Red | KloudXP"
+  description="Formulario y procedimiento oficial para reportar abusos de red, spam, phishing, malware o infracciones originadas desde direcciones IP de KloudXP."
+  lang="es"
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-12">
+    <!-- Header -->
+    <div class="text-center space-y-3">
+      <span class="text-xs font-mono uppercase tracking-widest text-rose-400 bg-rose-950/60 px-3.5 py-1 rounded-full border border-rose-800/60">
+        Seguridad de Red & SOC
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+        Reporte de Abuso de Servicios
+      </h1>
+      <p class="text-slate-400 text-sm max-w-2xl mx-auto leading-relaxed">
+        En KloudXP mantenemos una política de tolerancia cero frente a actividades maliciosas. Investigamos y actuamos de inmediato ante reportes legítimos de abuso en nuestra red.
+      </p>
+    </div>
+
+    <!-- Instructions card -->
+    <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4 text-xs sm:text-sm text-slate-300">
+      <h2 class="text-base font-bold text-white flex items-center">
+        <svg class="w-5 h-5 text-amber-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+        </svg>
+        Requisitos para procesar su denuncia:
+      </h2>
+      <ul class="list-disc pl-5 space-y-1.5 text-slate-400">
+        <li><strong>Dirección IP involucrada:</strong> Debe pertenecer a los rangos AS asignados a KloudXP.</li>
+        <li><strong>Evidencia técnica:</strong> Cabeceras completas de correo para SPAM, capturas de pantalla, URLs afectadas o fragmentos de logs del firewall.</li>
+        <li><strong>Canal directo alternativo:</strong> También puede enviar denuncias técnicas con firmas PGP o notificaciones formales de DMCA a <strong>abuse@kloudxp.com</strong>.</li>
+      </ul>
+    </div>
+
+    <!-- Abuse Form with Turnstile -->
+    <div class="space-y-4">
+      <h2 class="text-xl font-bold text-white">Formulario de Denuncia Técnica</h2>
+      <ContactForm lang="es" type="abuse" />
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,162 @@
+---
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: 'es' | 'en';
+  currentPath?: string;
+}
+
+const { lang, currentPath = '' } = Astro.props;
+const t = useTranslations(lang);
+
+const basePrefix = lang === 'es' ? '' : '/en';
+
+const navItems = [
+  { label: t('nav.home'), href: `${basePrefix}/` },
+  { label: t('nav.services'), href: `${basePrefix}/servicios` },
+  { label: t('nav.about'), href: `${basePrefix}/nosotros` },
+  { label: t('nav.pricing'), href: `${basePrefix}/precios` },
+  { label: t('nav.sla'), href: `${basePrefix}/sla` },
+  { label: t('nav.contact'), href: `${basePrefix}/contacto` },
+];
+
+// Target link for language toggle
+const esPath = currentPath.replace(/^\/en/, '') || '/';
+const enPath = currentPath.startsWith('/en') ? currentPath : `/en${currentPath === '/' ? '' : currentPath}`;
+---
+
+<header class="sticky top-0 z-50 w-full backdrop-blur-md bg-slate-950/85 border-b border-slate-800/80 transition-all">
+  <!-- Top bar info -->
+  <div class="hidden md:block bg-slate-900/60 border-b border-slate-800/50 py-1.5 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+      <div class="flex items-center space-x-6">
+        <a href="tel:+523322334400" class="flex items-center space-x-1.5 hover:text-sky-400 transition-colors">
+          <svg class="w-3.5 h-3.5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+          </svg>
+          <span>+52-33-2233-4400</span>
+        </a>
+        <a href="mailto:contacto@kloudxp.com" class="flex items-center space-x-1.5 hover:text-sky-400 transition-colors">
+          <svg class="w-3.5 h-3.5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          <span>contacto@kloudxp.com</span>
+        </a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <span class="inline-flex items-center text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/50 text-[11px]">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span>
+          Sistemas Operacionales 100%
+        </span>
+        <!-- Language Switcher -->
+        <div class="flex items-center space-x-1 font-medium bg-slate-800/80 rounded-md p-0.5 border border-slate-700/60">
+          <a
+            href={esPath}
+            class={`px-2 py-0.5 rounded text-[11px] transition-colors ${lang === 'es' ? 'bg-sky-600 text-white font-semibold' : 'text-slate-400 hover:text-slate-200'}`}
+          >
+            ES
+          </a>
+          <a
+            href={enPath}
+            class={`px-2 py-0.5 rounded text-[11px] transition-colors ${lang === 'en' ? 'bg-sky-600 text-white font-semibold' : 'text-slate-400 hover:text-slate-200'}`}
+          >
+            EN
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Nav -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href={`${basePrefix}/`} class="flex items-center space-x-3 group">
+        <img src="/images/logo-white.svg" alt="KloudXP" class="h-10 w-auto transition-transform group-hover:scale-105" />
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center space-x-8">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors relative py-1 hover:after:w-full after:w-0 after:h-[2px] after:bg-sky-400 after:absolute after:bottom-0 after:left-0 after:transition-all after:duration-300"
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- CTA & Mobile Toggle -->
+      <div class="flex items-center space-x-4">
+        <a
+          href={`${basePrefix}/precios`}
+          class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-sky-600 to-cyan-500 hover:from-sky-500 hover:to-cyan-400 rounded-lg shadow-lg shadow-sky-500/20 hover:shadow-sky-500/35 transition-all"
+        >
+          {t('nav.quote')}
+          <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+
+        <!-- Mobile Language Selector (Small screens) -->
+        <div class="flex lg:hidden items-center space-x-1 bg-slate-800/80 rounded-md p-0.5 border border-slate-700/60 text-xs">
+          <a href={esPath} class={`px-1.5 py-0.5 rounded ${lang === 'es' ? 'bg-sky-600 text-white font-bold' : 'text-slate-400'}`}>ES</a>
+          <a href={enPath} class={`px-1.5 py-0.5 rounded ${lang === 'en' ? 'bg-sky-600 text-white font-bold' : 'text-slate-400'}`}>EN</a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          class="lg:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none"
+          aria-label="Abrir menú de navegación"
+        >
+          <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+          </svg>
+          <svg id="menu-icon-close" class="hidden w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu drawer -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-slate-900/95 border-b border-slate-800 px-4 pt-2 pb-6 space-y-3">
+    {navItems.map((item) => (
+      <a
+        href={item.href}
+        class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-sky-400 hover:bg-slate-800/60 transition-colors"
+      >
+        {item.label}
+      </a>
+    ))}
+    <div class="pt-4 border-t border-slate-800 flex flex-col space-y-3">
+      <a
+        href={`${basePrefix}/precios`}
+        class="w-full text-center py-2.5 px-4 text-sm font-semibold text-white bg-sky-600 hover:bg-sky-500 rounded-lg shadow-md transition-colors"
+      >
+        {t('nav.quote')}
+      </a>
+      <div class="text-xs text-slate-400 flex flex-col space-y-1.5 px-2">
+        <span class="flex items-center"><span class="text-sky-400 mr-2">📞</span> +52-33-2233-4400</span>
+        <span class="flex items-center"><span class="text-sky-400 mr-2">✉️</span> contacto@kloudxp.com</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+    iconOpen?.classList.toggle('hidden');
+    iconClose?.classList.toggle('hidden');
+  });
+</script>

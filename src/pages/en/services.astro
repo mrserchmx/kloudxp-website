@@ -1,0 +1,195 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const servicesDetailEn = [
+  {
+    id: 'nube-privada',
+    title: 'Dedicated Hosted Private Cloud',
+    subtitle: 'Absolute control, predictable performance, and total isolation',
+    badge: 'Official Proxmox Partner',
+    desc: 'Our Hosted Private Cloud provides the elasticity of cloud computing with the security and hardware isolation of dedicated, single-tenant servers.',
+    highlights: [
+      { title: 'Full Customization', desc: 'Custom configured CPU, ECC RAM, and All-Flash NVMe storage tiers.' },
+      { title: 'Enterprise Isolation', desc: 'Zero noisy neighbors. Dedicated hypervisor cores and physical networks.' },
+      { title: 'Peak Performance', desc: 'Proxmox VE with high-performance Ceph storage for consistent sub-millisecond IOPS.' },
+      { title: 'Hypervisor Level Control', desc: 'Full API access, web console, and infrastructure-as-code automation.' }
+    ],
+    techSpecs: [
+      'AMD EPYC™ and Intel® Xeon® Scalable enterprise processors',
+      'DDR4/DDR5 Registered ECC Memory',
+      'Dual 10Gbps / 25Gbps redundant bonded uplinks',
+      '99.99% Uptime backed by formal SLA contract'
+    ]
+  },
+  {
+    id: 'nube-publica',
+    title: 'Public Cloud for Virtual Machines',
+    subtitle: 'Instant provisioning, scalable compute, and transparent monthly pricing',
+    badge: 'Elastic Scale',
+    desc: 'Deploy high-performance KVM virtual instances in seconds with flat, predictable costs and zero hidden egress bandwidth fees.',
+    highlights: [
+      { title: 'Dynamic Scaling', desc: 'Scale vCPU and RAM dynamically to accommodate traffic spikes.' },
+      { title: 'Low Latency Network', desc: 'Direct carrier-neutral peering across Mexico, North America, and global backbones.' },
+      { title: 'Predictable Costs', desc: 'Flat monthly rates without fluctuating egress charges.' },
+      { title: 'Cloud Automation', desc: 'Cloud-init templates, scheduled snapshots, and custom Virtual Private Clouds (VPC).' }
+    ],
+    techSpecs: [
+      'Hardware-assisted KVM virtualization',
+      'High-speed distributed NVMe enterprise storage',
+      'Dedicated static IPv4 addresses and native IPv6 support',
+      'Proactive telemetry monitoring and real-time health checks'
+    ]
+  },
+  {
+    id: 'storage',
+    title: 'File & Block Storage NVMe',
+    badge: 'High Concurrency',
+    desc: 'Ultra-low latency, scalable enterprise storage engineered for transaction-heavy databases, big data pipelines, and shared file repositories.',
+    highlights: [
+      { title: '100,000+ IOPS', desc: 'All-Flash NVMe SSDs delivering sustained low latency under heavy concurrent loads.' },
+      { title: 'Multi-Protocol Support', desc: 'Native integration with NFSv3/v4, SMB/CIFS, and iSCSI targets.' },
+      { title: 'Live Capacity Expansion', desc: 'Grow volume sizes on the fly without system reboots or service disruption.' },
+      { title: 'Continuous Snapshots', desc: 'Instantaneous block-level snapshots and off-site replication.' }
+    ],
+    techSpecs: [
+      'Sustained throughput up to 2.5 GB/s per volume',
+      'AES-256 encryption at rest and in transit',
+      'Seamless support for Linux, Windows Server, and BSD',
+      'Certified for PostgreSQL, MySQL, MS SQL, and Oracle workloads'
+    ]
+  },
+  {
+    id: 'proteccion-datos',
+    title: 'Data Protection & Disaster Recovery (DRP)',
+    badge: 'Proxmox Backup Server',
+    desc: 'Shield your business against ransomware, hardware failures, and human error with immutable backup snapshots and automated recovery plans.',
+    highlights: [
+      { title: 'Immutable Backups', desc: 'WORM (Write Once, Read Many) technology that cannot be altered or encrypted by malware.' },
+      { title: 'Smart Deduplication', desc: 'Save up to 85% storage by only transferring and storing unique data blocks.' },
+      { title: 'Instant Granular Restore', desc: 'Recover individual lost files or boot full virtual machines in seconds.' },
+      { title: 'Near-Zero RTO & RPO', desc: 'Minimize business interruption and transactional loss.' }
+    ],
+    techSpecs: [
+      'Client-side encryption before data leaves your servers',
+      'Automated daily backup integrity and checksum verification',
+      '3-2-1 backup strategy with geographical offsite replication',
+      'Assisted disaster recovery drills and simulations'
+    ]
+  },
+  {
+    id: 'colocation',
+    title: 'Server Colocation (Housing)',
+    badge: 'HostDime Tier III/IV',
+    desc: 'House your own proprietary hardware in world-class, certified data centers in Guadalajara (Mexico) and the United States.',
+    highlights: [
+      { title: 'Secure Rack Space', desc: 'Full 42U private cabinets, half racks, or per-U space in clean rooms.' },
+      { title: '2N Power Redundancy', desc: 'Uninterruptible dual A+B power feeds with industrial UPS and diesel generators.' },
+      { title: 'Carrier Neutral', desc: 'Direct access to major telecom carriers and international IXPs.' },
+      { title: 'Physical Security', desc: 'Multifactor biometric entry, 24/7 CCTV, and armed facility security.' }
+    ],
+    techSpecs: [
+      'Data Centers in Guadalajara (Jalisco), Querétaro, and Orlando (Florida)',
+      'ISO 27001, SOC 2 Type II, and PCI-DSS compliance certified',
+      '24/7 Remote Hands engineering support on site',
+      'Dual A+B power feeds per rack'
+    ]
+  },
+  {
+    id: 'profesionales',
+    title: 'Professional Services & 24/7 Support',
+    badge: 'Senior Engineering',
+    desc: 'Experienced cloud architects and Linux systems engineers partnering with your internal team from initial design through 24/7 monitoring.',
+    highlights: [
+      { title: 'Cloud Architecture & Audit', desc: 'Tailor-made infrastructure blueprints built for resilience and scalability.' },
+      { title: 'Zero-Downtime Migration', desc: 'Smooth, planned migrations from VMware, AWS, or on-prem servers.' },
+      { title: 'Ongoing Optimization', desc: 'Continuous performance tuning and resource right-sizing.' },
+      { title: '24/7 Direct L3 Support', desc: 'Direct communication with senior engineers without tiered call-center delays.' }
+    ],
+    techSpecs: [
+      'Critical incident response time < 15 minutes',
+      'Proactive monitoring with Prometheus, Zabbix, and Grafana',
+      'Hypervisor security hardening and kernel patch management',
+      'Knowledge transfer and technical onboarding sessions'
+    ]
+  }
+];
+---
+
+<Layout
+  title="Cloud Infrastructure Services | KloudXP"
+  description="Explore our portfolio of Dedicated Private Cloud, Public Cloud VMs, NVMe Storage, Data Protection, and Colocation."
+  lang="en"
+>
+  <section class="py-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <span class="text-xs font-mono uppercase tracking-widest text-sky-400 bg-sky-950/60 px-3.5 py-1 rounded-full border border-sky-800/60">
+        Enterprise Solutions
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+        High-Availability Cloud Infrastructure
+      </h1>
+      <p class="text-slate-400 text-lg max-w-3xl mx-auto">
+        Tailored cloud architectures engineered to guarantee operational continuity, robust security, and tangible cost savings.
+      </p>
+    </div>
+  </section>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-24">
+    {servicesDetailEn.map((service, index) => (
+      <section id={service.id} class="scroll-mt-28">
+        <div class={`grid grid-cols-1 lg:grid-cols-12 gap-10 items-start ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center space-x-2 bg-sky-950/70 border border-sky-800/60 px-3 py-1 rounded-full text-xs font-semibold text-sky-300">
+              <span>{service.badge}</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+              {service.title}
+            </h2>
+            <p class="text-lg text-sky-400 font-medium">{service.subtitle}</p>
+            <p class="text-slate-300 text-base leading-relaxed">{service.desc}</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+              {service.highlights.map((h) => (
+                <div class="p-4 bg-slate-900/60 border border-slate-800 rounded-xl space-y-1.5">
+                  <h3 class="text-sm font-bold text-white flex items-center">
+                    <span class="w-1.5 h-1.5 rounded-full bg-sky-400 mr-2"></span>
+                    {h.title}
+                  </h3>
+                  <p class="text-xs text-slate-400 leading-relaxed">{h.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <div class="pt-4 flex items-center space-x-4">
+              <a
+                href={`/en/pricing?service=${service.id}`}
+                class="inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-white bg-sky-600 hover:bg-sky-500 rounded-xl shadow-lg transition-colors cursor-pointer"
+              >
+                Request a Quote
+              </a>
+              <a href="/en/contact" class="inline-flex items-center text-sm font-semibold text-slate-300 hover:text-white transition-colors">
+                Consult an Engineer
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+            <h3 class="text-xs font-mono uppercase tracking-wider text-slate-400 border-b border-slate-800 pb-3">
+              Technical Specifications
+            </h3>
+            <ul class="space-y-3 font-mono text-xs">
+              {service.techSpecs.map((spec) => (
+                <li class="flex items-start text-slate-300">
+                  <svg class="w-4 h-4 text-emerald-400 mr-2.5 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  <span>{spec}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+    ))}
+  </div>
+</Layout>

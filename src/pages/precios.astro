@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+import QuoteCalculator from '../components/QuoteCalculator.astro';
+
+const comparisons = [
+  { feature: 'Tarifas por transferencia (Data Egress)', hyperscalers: 'Cargos exorbitantes e impredecibles por cada GB transferido', kloudxp: 'Tráfico masivo incluido en todos los planes sin sorpresas' },
+  { feature: 'Soporte Técnico Especializado', hyperscalers: 'Costo adicional elevado (hasta 10% de su factura) o bots automatizados', kloudxp: 'Soporte humano L3 24/7/365 en español incluido' },
+  { feature: 'Hipervisor y Control de Nube', hyperscalers: 'Propiedad cerrada, sin acceso raíz a nivel hipervisor', kloudxp: 'Proxmox VE empresarial con acceso y orquestación abierta' },
+  { feature: 'Almacenamiento NVMe', hyperscalers: 'Cobro diferenciado por IOPS aprovisionados y latencia variable', kloudxp: 'NVMe All-Flash de ultra baja latencia con IOPS dedicados' },
+  { feature: 'Facturación y Divisa', hyperscalers: 'Fluctuación cambiaria en dólares con facturación en el extranjero', kloudxp: 'Facturación mexicana con CFDI o en dólares según su preferencia' },
+];
+---
+
+<Layout
+  title="Guía de Planificación de Costos & Precios | KloudXP"
+  description="Tarifas transparentes, calculador interactivo de recursos cloud y guía de planificación estratégica para infraestructura en la nube."
+  lang="es"
+>
+  <!-- Header Banner -->
+  <section class="py-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <span class="text-xs font-mono uppercase tracking-widest text-sky-400 bg-sky-950/60 px-3.5 py-1 rounded-full border border-sky-800/60">
+        Precios Transparentes
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+        Guía de Planificación y Cotización Cloud
+      </h1>
+      <p class="text-slate-400 text-lg max-w-3xl mx-auto">
+        Desarrollamos relaciones de confianza con tarifas transparentes y sin complicaciones. Dimensione sus servidores y calcule su presupuesto sin costes ocultos.
+      </p>
+    </div>
+  </section>
+
+  <!-- Interactive Estimator -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <QuoteCalculator lang="es" />
+    </div>
+  </section>
+
+  <!-- Cloud Cost Comparison Section -->
+  <section class="py-20 bg-slate-950/80 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <h2 class="text-3xl font-extrabold text-white">¿Por qué las empresas optimizan con KloudXP?</h2>
+        <p class="text-slate-400 text-sm">
+          Comparativa transparente frente a los proveedores tradicionales de nube pública (AWS, Azure, GCP).
+        </p>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm border-collapse bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+          <thead>
+            <tr class="border-b border-slate-800 bg-slate-950/90 text-xs font-mono uppercase text-slate-400">
+              <th class="p-4 sm:p-5">Criterio Tecnológico & Económico</th>
+              <th class="p-4 sm:p-5 text-slate-400">Hiperescaladores Tradicionales</th>
+              <th class="p-4 sm:p-5 text-sky-400 font-bold bg-sky-950/30">KloudXP Private & Public Cloud</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/70 text-xs sm:text-sm">
+            {comparisons.map((c) => (
+              <tr class="hover:bg-slate-800/30 transition-colors">
+                <td class="p-4 sm:p-5 font-semibold text-white">{c.feature}</td>
+                <td class="p-4 sm:p-5 text-slate-400">{c.hyperscalers}</td>
+                <td class="p-4 sm:p-5 font-semibold text-sky-300 bg-sky-950/20">{c.kloudxp}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Planning Guide Download Box -->
+      <div class="bg-gradient-to-r from-sky-950/80 via-slate-900 to-slate-950 border border-sky-800/60 p-8 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+        <div class="space-y-2 text-center md:text-left">
+          <h3 class="text-xl font-bold text-white">Descargue nuestra Guía de Planificación de Infraestructura</h3>
+          <p class="text-xs sm:text-sm text-slate-300 max-w-xl leading-relaxed">
+            Un documento técnico en PDF para ayudar a su equipo de TI a evaluar el dimensionamiento de memoria, núcleos y almacenamiento antes de iniciar una migración.
+          </p>
+        </div>
+        <a
+          href="/contacto?asunto=Descarga%20Guia%20de%20Planificacion"
+          class="shrink-0 inline-flex items-center justify-center px-6 py-3.5 text-sm font-bold text-white bg-sky-600 hover:bg-sky-500 rounded-xl shadow-lg transition-colors cursor-pointer"
+        >
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          Solicitar Guía en PDF
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,66 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import QuoteCalculator from '../../components/QuoteCalculator.astro';
+
+const comparisonsEn = [
+  { feature: 'Data Egress Bandwidth Fees', hyperscalers: 'Expensive, unpredictable fees per gigabyte transferred out', kloudxp: 'Generous multi-terabyte traffic allocations included' },
+  { feature: 'Dedicated Engineering Support', hyperscalers: 'Costly enterprise support tier or automated bots', kloudxp: 'Direct 24/7/365 senior L3 human engineering support included' },
+  { feature: 'Hypervisor & Kernel Control', hyperscalers: 'Proprietary closed-source stack with no root hypervisor access', kloudxp: 'Full root access and open APIs via enterprise Proxmox VE' },
+  { feature: 'All-Flash NVMe Storage', hyperscalers: 'Tiered charges per provisioned IOPS with variable latency', kloudxp: 'Enterprise All-Flash NVMe with dedicated high IOPS' },
+];
+---
+
+<Layout
+  title="Pricing & Planning Guide | KloudXP"
+  description="Transparent pricing, interactive cloud resource calculator, and infrastructure planning guide."
+  lang="en"
+>
+  <section class="py-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <span class="text-xs font-mono uppercase tracking-widest text-sky-400 bg-sky-950/60 px-3.5 py-1 rounded-full border border-sky-800/60">
+        Transparent Pricing
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+        Cloud Planning & Estimator Guide
+      </h1>
+      <p class="text-slate-400 text-lg max-w-3xl mx-auto">
+        Building trust through predictable, transparent pricing and zero hidden fees. Right-size your compute and storage with confidence.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <QuoteCalculator lang="en" />
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-950/80 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <h2 class="text-3xl font-extrabold text-white">Why Enterprises Choose KloudXP over Hyperscalers</h2>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm border-collapse bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+          <thead>
+            <tr class="border-b border-slate-800 bg-slate-950/90 text-xs font-mono uppercase text-slate-400">
+              <th class="p-4 sm:p-5">Technical & Commercial Metric</th>
+              <th class="p-4 sm:p-5 text-slate-400">Traditional Hyperscalers</th>
+              <th class="p-4 sm:p-5 text-sky-400 font-bold bg-sky-950/30">KloudXP Private & Public Cloud</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/70 text-xs sm:text-sm">
+            {comparisonsEn.map((c) => (
+              <tr class="hover:bg-slate-800/30 transition-colors">
+                <td class="p-4 sm:p-5 font-semibold text-white">{c.feature}</td>
+                <td class="p-4 sm:p-5 text-slate-400">{c.hyperscalers}</td>
+                <td class="p-4 sm:p-5 font-semibold text-sky-300 bg-sky-950/20">{c.kloudxp}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</Layout>

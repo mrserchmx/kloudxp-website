@@ -1,0 +1,86 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang?: 'es' | 'en';
+  canonical?: string;
+}
+
+const {
+  title,
+  description = 'KloudXP - Soluciones de Infraestructura Cloud, Nube Privada Dedicada con Proxmox, Almacenamiento NVMe y Protección de Datos 24/7 en México y Norteamérica.',
+  lang = 'es',
+  canonical = Astro.url.href
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+const esUrl = new URL(currentPath.replace(/^\/en/, '') || '/', Astro.site || 'https://kloudxp.com').href;
+const enUrl = new URL(currentPath.startsWith('/en') ? currentPath : `/en${currentPath === '/' ? '' : currentPath}`, Astro.site || 'https://kloudxp.com').href;
+---
+
+<!DOCTYPE html>
+<html lang={lang} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | KloudXP Cloud Solutions</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Multilingual Alternate Links -->
+    <link rel="alternate" hreflang="es" href={esUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href={esUrl} />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={`${title} | KloudXP`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="KloudXP" />
+    <meta property="og:image" content="/images/logo-white.svg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | KloudXP`} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+    <!-- Font preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <style>
+      body {
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      }
+      code, pre, .font-mono {
+        font-family: 'JetBrains Mono', monospace;
+      }
+    </style>
+  </head>
+  <body class="bg-[#0B0F19] text-slate-100 min-h-screen flex flex-col selection:bg-sky-500 selection:text-white relative overflow-x-hidden">
+    <!-- Subtle Background Tech Grid Glow -->
+    <div class="fixed inset-0 pointer-events-none z-0">
+      <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-sky-500/10 blur-[130px] rounded-full"></div>
+      <div class="absolute top-[40%] right-[-150px] w-[500px] h-[400px] bg-cyan-500/5 blur-[120px] rounded-full"></div>
+      <div class="absolute bottom-10 left-[-100px] w-[600px] h-[400px] bg-indigo-500/5 blur-[140px] rounded-full"></div>
+    </div>
+
+    <!-- Main App Structure -->
+    <div class="relative z-10 flex flex-col min-h-screen">
+      <Navbar lang={lang} currentPath={currentPath} />
+      <main class="flex-grow">
+        <slot />
+      </main>
+      <Footer lang={lang} />
+    </div>
+  </body>
+</html>

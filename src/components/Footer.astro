@@ -1,0 +1,167 @@
+---
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const basePrefix = lang === 'es' ? '' : '/en';
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-slate-950 text-slate-400 border-t border-slate-800/80 pt-16 pb-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+      <!-- Brand & Bio -->
+      <div class="lg:col-span-2 space-y-4">
+        <a href={`${basePrefix}/`} class="inline-block">
+          <img src="/images/logo-white.svg" alt="KloudXP" class="h-9 w-auto" />
+        </a>
+        <p class="text-sm text-slate-400 max-w-sm leading-relaxed">
+          {t('footer.desc')}
+        </p>
+        <!-- Strategic Partners Badges -->
+        <div class="pt-4">
+          <p class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-3">
+            {lang === 'es' ? 'Alianzas & Tecnología' : 'Technology & Alliances'}
+          </p>
+          <div class="flex items-center space-x-6">
+            <div class="bg-slate-900/90 border border-slate-800 p-2.5 rounded-lg flex items-center h-12">
+              <img src="/images/partners/proxmox-partner.svg" alt="Proxmox Official Partner" class="h-7 w-auto object-contain" />
+            </div>
+            <div class="bg-slate-900/90 border border-slate-800 p-2.5 rounded-lg flex items-center h-12">
+              <img src="/images/partners/hostdime.webp" alt="HostDime Global Data Centers" class="h-6 w-auto object-contain brightness-150 contrast-125" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cloud Services Column -->
+      <div class="space-y-3">
+        <h4 class="text-sm font-semibold text-slate-100 uppercase tracking-wider">
+          {t('footer.services')}
+        </h4>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href={`${basePrefix}/servicios#nube-privada`} class="hover:text-sky-400 transition-colors">
+              {lang === 'es' ? 'Nube Privada Dedicada' : 'Dedicated Private Cloud'}
+            </a>
+          </li>
+          <li>
+            <a href={`${basePrefix}/servicios#nube-publica`} class="hover:text-sky-400 transition-colors">
+              {lang === 'es' ? 'Nube Pública (VMs)' : 'Public Cloud (VMs)'}
+            </a>
+          </li>
+          <li>
+            <a href={`${basePrefix}/servicios#storage`} class="hover:text-sky-400 transition-colors">
+              {lang === 'es' ? 'File & Block Storage' : 'File & Block Storage'}
+            </a>
+          </li>
+          <li>
+            <a href={`${basePrefix}/servicios#proteccion-datos`} class="hover:text-sky-400 transition-colors">
+              {lang === 'es' ? 'Protección de Datos & DRP' : 'Data Protection & DRP'}
+            </a>
+          </li>
+          <li>
+            <a href={`${basePrefix}/servicios#colocation`} class="hover:text-sky-400 transition-colors">
+              {lang === 'es' ? 'Co-locación de Servidores' : 'Server Colocation'}
+            </a>
+          </li>
+          <li>
+            <a href={`${basePrefix}/servicios#profesionales`} class="hover:text-sky-400 transition-colors">
+              {lang === 'es' ? 'Servicios Profesionales' : 'Professional Services'}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Navigation & Support Column -->
+      <div class="space-y-3">
+        <h4 class="text-sm font-semibold text-slate-100 uppercase tracking-wider">
+          {t('footer.links')}
+        </h4>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href={`${basePrefix}/nosotros`} class="hover:text-sky-400 transition-colors">
+              {t('nav.about')}
+            </a>
+          </li>
+          <li>
+            <a href={`${basePrefix}/precios`} class="hover:text-sky-400 transition-colors">
+              {t('footer.planning')}
+            </a>
+          </li>
+          <li>
+            <a href={`${basePrefix}/sla`} class="hover:text-sky-400 transition-colors">
+              {t('footer.sla')}
+            </a>
+          </li>
+          <li>
+            <a href={`${basePrefix}/contacto`} class="hover:text-sky-400 transition-colors">
+              {t('nav.contact')}
+            </a>
+          </li>
+          <li>
+            <a href={`${basePrefix}/privacidad`} class="hover:text-sky-400 transition-colors">
+              {t('footer.privacy')}
+            </a>
+          </li>
+          <li>
+            <a href={`${basePrefix}/terminos`} class="hover:text-sky-400 transition-colors">
+              {t('footer.terms')}
+            </a>
+          </li>
+          <li>
+            <a href={`${basePrefix}/abuso`} class="hover:text-sky-400 transition-colors">
+              {t('footer.abuse')}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact Info Column -->
+      <div class="space-y-3">
+        <h4 class="text-sm font-semibold text-slate-100 uppercase tracking-wider">
+          {lang === 'es' ? 'Oficinas & Contacto' : 'Corporate Contact'}
+        </h4>
+        <div class="space-y-2.5 text-sm">
+          <p class="leading-relaxed">
+            Av. de las Américas 320, Altamira, 45160 Zapopan, Jalisco, México
+          </p>
+          <p>
+            <a href="https://maps.app.goo.gl/gw5AMAMp1Nse4J8M7" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 inline-flex items-center text-xs">
+              <span>{lang === 'es' ? 'Ver en Google Maps' : 'View on Google Maps'}</span>
+              <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+            </a>
+          </p>
+          <div class="pt-2 border-t border-slate-800 space-y-1">
+            <p class="flex items-center text-slate-300">
+              <span class="text-sky-400 mr-2 text-xs">TEL:</span>
+              <a href="tel:+523322334400" class="hover:text-sky-400 transition-colors">+52-33-2233-4400</a>
+            </p>
+            <p class="flex items-center text-slate-300">
+              <span class="text-sky-400 mr-2 text-xs">EMAIL:</span>
+              <a href="mailto:contacto@kloudxp.com" class="hover:text-sky-400 transition-colors">contacto@kloudxp.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom copyright -->
+    <div class="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 space-y-3 sm:space-y-0">
+      <p>© {currentYear} KloudXP (Kloud Xperts). {t('footer.rights')}</p>
+      <div class="flex items-center space-x-4">
+        <a href={`${basePrefix}/privacidad`} class="hover:text-slate-300 transition-colors">{t('footer.privacy')}</a>
+        <span>•</span>
+        <a href={`${basePrefix}/terminos`} class="hover:text-slate-300 transition-colors">{t('footer.terms')}</a>
+        <span>•</span>
+        <a href={`${basePrefix}/abuso`} class="hover:text-slate-300 transition-colors">{t('footer.abuse')}</a>
+      </div>
+    </div>
+  </div>
+</footer>

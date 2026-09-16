@@ -1,0 +1,187 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const servicesSLA = [
+  {
+    service: 'Nube Privada Hospedada (Dedicated Private Cloud)',
+    desc: 'Entorno privado y dedicado con alto nivel de personalización, seguridad avanzada y rendimiento optimizado para clientes con necesidades específicas de control y cumplimiento.',
+    uptime: '99.9%',
+    respCritico: '30 - 60 minutos',
+    penalizacion: 'Crédito del 5% de la factura mensual por cada periodo de indisponibilidad no programada que exceda el SLA pactado.'
+  },
+  {
+    service: 'Nube Pública para Máquinas Virtuales',
+    desc: 'Infraestructura escalable y flexible para la gestión y alojamiento de máquinas virtuales KVM en un entorno redundante con optimización de costos.',
+    uptime: '99.9%',
+    respCritico: '60 minutos',
+    penalizacion: 'Crédito del 5% de la factura mensual aplicable directamente al ciclo siguiente.'
+  },
+  {
+    service: 'File & Block Storage NVMe',
+    desc: 'Almacenamiento en bloques de ultra baja latencia optimizado para operaciones de E/S intensivas, bases de datos y sistemas transaccionales.',
+    uptime: '99.9%',
+    respCritico: '45 minutos',
+    penalizacion: 'Crédito del 5% al 10% según el tiempo de indisponibilidad sostenida.'
+  },
+  {
+    service: 'Protección de Datos & DRP',
+    desc: 'Solución de respaldo inmutable y recuperación ante desastres con Proxmox Backup Server (PBS).',
+    uptime: '99.9%',
+    respCritico: 'Garantía de inicio de restauración en menos de 4 horas',
+    penalizacion: 'Compensación en créditos de servicio por incumplimiento de RTO acordado.'
+  },
+  {
+    service: 'Co-locación de Servidores (Colocation)',
+    desc: 'Alojamiento de infraestructura física en centros de datos seguros Tier III/IV con conectividad redundante y climatización controlada.',
+    uptime: '99.99%',
+    respCritico: '30 minutos (Manos remotas 24/7)',
+    penalizacion: 'Crédito del 5% de la mensualidad por corte en suministro eléctrico o conectividad de borde.'
+  }
+];
+
+const severityLevels = [
+  {
+    level: 'Severidad 1 (Crítico)',
+    desc: 'Interrupción total del servicio de producción. Las operaciones comerciales se encuentran completamente detenidas sin alternativa viable.',
+    respTime: '< 30 minutos',
+    updateFreq: 'Cada 30 minutos hasta su resolución'
+  },
+  {
+    level: 'Severidad 2 (Alta)',
+    desc: 'Degradación severa del rendimiento o pérdida parcial de funcionalidad que afecta a usuarios críticos, pero el servicio permanece operativo.',
+    respTime: '< 2 horas',
+    updateFreq: 'Cada 2 horas'
+  },
+  {
+    level: 'Severidad 3 (Media)',
+    desc: 'Problemas menores en componentes no críticos, consultas operativas o requerimientos de configuración estándar.',
+    respTime: '< 4 horas',
+    updateFreq: 'Diario o según avance'
+  },
+  {
+    level: 'Severidad 4 (Baja / Consulta)',
+    desc: 'Solicitudes de información, cambios programados con anticipación o asesoría técnica preventiva.',
+    respTime: '< 12 horas',
+    updateFreq: 'Según requerimiento'
+  }
+];
+---
+
+<Layout
+  title="Niveles de Servicio (SLA) | KloudXP"
+  description="Acuerdo de Nivel de Servicio (SLA) oficial de KloudXP. Compromisos de disponibilidad de red, tiempos de respuesta y compensaciones contractuales."
+  lang="es"
+>
+  <!-- Header -->
+  <section class="py-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 bg-emerald-950/60 px-3.5 py-1 rounded-full border border-emerald-800/60">
+        Garantía Contractual
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+        Service Level Agreement (SLA)
+      </h1>
+      <p class="text-slate-400 text-lg max-w-3xl mx-auto">
+        Compromisos formales de disponibilidad, tiempos de respuesta técnica y resolución de incidencias para asegurar la continuidad ininterrumpida de sus operaciones.
+      </p>
+    </div>
+  </section>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+    <!-- Intro and definitions -->
+    <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-8 space-y-6">
+      <h2 class="text-2xl font-bold text-white">1. Definiciones Fundamentales</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+        <div class="p-4 bg-slate-950/70 border border-slate-800/80 rounded-xl space-y-2">
+          <div class="text-sky-400 font-bold">Disponibilidad del Servicio</div>
+          <p class="text-slate-300 text-xs leading-relaxed">
+            Porcentaje de tiempo durante un mes calendario en el cual la infraestructura de red, hipervisores y almacenamiento se encuentran plenamente operativos y accesibles.
+          </p>
+        </div>
+        <div class="p-4 bg-slate-950/70 border border-slate-800/80 rounded-xl space-y-2">
+          <div class="text-cyan-400 font-bold">Tiempo de Respuesta</div>
+          <p class="text-slate-300 text-xs leading-relaxed">
+            Intervalo medido desde la recepción del ticket de incidente en nuestra plataforma de soporte hasta la asignación e inicio de diagnóstico por un ingeniero de nivel 3.
+          </p>
+        </div>
+        <div class="p-4 bg-slate-950/70 border border-slate-800/80 rounded-xl space-y-2">
+          <div class="text-emerald-400 font-bold">Tiempo de Resolución</div>
+          <p class="text-slate-300 text-xs leading-relaxed">
+            Lapso comprendido desde la confirmación del incidente hasta el restablecimiento completo del servicio a sus parámetros nominales de operación.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Severity table -->
+    <div class="space-y-6">
+      <h2 class="text-2xl font-bold text-white">2. Niveles de Severidad y Tiempos de Respuesta</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm border-collapse bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden">
+          <thead>
+            <tr class="border-b border-slate-800 bg-slate-950/80 text-xs uppercase font-mono text-slate-400">
+              <th class="p-4">Nivel de Severidad</th>
+              <th class="p-4">Descripción del Impacto</th>
+              <th class="p-4">Tiempo de Primera Respuesta</th>
+              <th class="p-4">Frecuencia de Actualizaciones</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/60 text-xs sm:text-sm">
+            {severityLevels.map((row) => (
+              <tr class="hover:bg-slate-800/30 transition-colors">
+                <td class="p-4 font-bold text-sky-400 whitespace-nowrap">{row.level}</td>
+                <td class="p-4 text-slate-300 max-w-md">{row.desc}</td>
+                <td class="p-4 font-mono font-bold text-emerald-400 whitespace-nowrap">{row.respTime}</td>
+                <td class="p-4 text-slate-400">{row.updateFreq}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Services SLA matrix -->
+    <div class="space-y-6">
+      <h2 class="text-2xl font-bold text-white">3. Matriz de Disponibilidad por Servicio</h2>
+      <div class="space-y-4">
+        {servicesSLA.map((item) => (
+          <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="space-y-1.5 max-w-2xl">
+              <h3 class="text-base font-bold text-white">{item.service}</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">{item.desc}</p>
+              <div class="text-xs text-slate-500 pt-1">
+                <strong class="text-slate-400">Compensación:</strong> {item.penalizacion}
+              </div>
+            </div>
+            <div class="flex items-center space-x-6 shrink-0 pt-2 md:pt-0">
+              <div class="text-center">
+                <div class="text-xs text-slate-400">Disponibilidad</div>
+                <div class="text-xl font-mono font-bold text-emerald-400">{item.uptime}</div>
+              </div>
+              <div class="text-center">
+                <div class="text-xs text-slate-400">Incidente Crítico</div>
+                <div class="text-sm font-mono font-semibold text-sky-400">{item.respCritico}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Maintenance and Penalties -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="p-6 bg-slate-900/60 border border-slate-800 rounded-xl space-y-3">
+        <h3 class="text-lg font-bold text-white">Ventanas de Mantenimiento Programado</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Las labores preventivas de actualización de seguridad y mantenimiento se efectúan en ventanas de bajo tráfico (habitualmente fines de semana entre las 01:00 y las 05:00 horas, tiempo del centro de México). KloudXP notifica a los contactos técnicos con al menos <strong>5 días hábiles de anticipación</strong>.
+        </p>
+      </div>
+      <div class="p-6 bg-slate-900/60 border border-slate-800 rounded-xl space-y-3">
+        <h3 class="text-lg font-bold text-white">Procedimiento para Reclamo de Créditos</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Para solicitar los créditos por incumplimiento de SLA, el cliente deberá abrir una solicitud formal al correo <strong>soporte@kloudxp.com</strong> dentro de los 15 días posteriores al incidente, indicando fecha, hora y afectación. Los créditos se aplican en la factura inmediata posterior.
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>

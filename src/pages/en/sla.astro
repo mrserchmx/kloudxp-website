@@ -1,0 +1,143 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const servicesSLAEn = [
+  {
+    service: 'Dedicated Hosted Private Cloud',
+    desc: 'Dedicated single-tenant environment with high customization, advanced security, and optimized performance for strict compliance workloads.',
+    uptime: '99.9%',
+    respCritico: '30 - 60 minutes',
+    penalizacion: '5% monthly invoice credit for unscheduled downtime exceeding the SLA target.'
+  },
+  {
+    service: 'Public Cloud for Virtual Machines',
+    desc: 'Elastic KVM cloud compute with automated failover and cost optimization.',
+    uptime: '99.9%',
+    respCritico: '60 minutes',
+    penalizacion: '5% credit applied directly to the subsequent billing cycle.'
+  },
+  {
+    service: 'File & Block Storage NVMe',
+    desc: 'High-throughput, low-latency block storage for databases and mission-critical applications.',
+    uptime: '99.9%',
+    respCritico: '45 minutes',
+    penalizacion: '5% to 10% credit depending on duration of sustained disruption.'
+  },
+  {
+    service: 'Data Protection & DRP',
+    desc: 'Immutable backup and disaster recovery powered by Proxmox Backup Server (PBS).',
+    uptime: '99.9%',
+    respCritico: 'Restore initiation SLA guaranteed within 4 hours',
+    penalizacion: 'Service credit compensation for failure to meet agreed RTO targets.'
+  },
+  {
+    service: 'Server Colocation (Housing)',
+    desc: 'Physical rack housing in Tier III/IV data center facilities with 2N redundant electrical infrastructure and precision climate control.',
+    uptime: '99.99%',
+    respCritico: '30 minutes (24/7 on-site Remote Hands)',
+    penalizacion: '5% monthly invoice credit for power path or edge routing outage.'
+  }
+];
+
+const severityLevelsEn = [
+  {
+    level: 'Severity 1 (Critical)',
+    desc: 'Complete production service outage. Core business operations are halted with no immediate workaround.',
+    respTime: '< 30 minutes',
+    updateFreq: 'Every 30 minutes until resolution'
+  },
+  {
+    level: 'Severity 2 (High)',
+    desc: 'Major functionality impairment or severe performance degradation impacting critical business operations.',
+    respTime: '< 2 hours',
+    updateFreq: 'Every 2 hours'
+  },
+  {
+    level: 'Severity 3 (Medium)',
+    desc: 'Minor issue in non-critical components, standard configuration inquiries, or operational support.',
+    respTime: '< 4 hours',
+    updateFreq: 'Daily or upon milestone'
+  },
+  {
+    level: 'Severity 4 (Low / Query)',
+    desc: 'Informational requests, pre-scheduled maintenance inquiries, or preventative technical advisory.',
+    respTime: '< 12 hours',
+    updateFreq: 'As requested'
+  }
+];
+---
+
+<Layout
+  title="Service Level Agreement (SLA) | KloudXP"
+  description="Official Service Level Agreement (SLA). Uptime commitments, response intervals, and contractual compensation terms."
+  lang="en"
+>
+  <section class="py-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 bg-emerald-950/60 px-3.5 py-1 rounded-full border border-emerald-800/60">
+        Contractual Guarantee
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+        Service Level Agreement (SLA)
+      </h1>
+      <p class="text-slate-400 text-lg max-w-3xl mx-auto">
+        Formal commitments to availability, rapid technical response intervals, and operational continuity.
+      </p>
+    </div>
+  </section>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+    <div class="space-y-6">
+      <h2 class="text-2xl font-bold text-white">Severity Matrix & Response Windows</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm border-collapse bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden">
+          <thead>
+            <tr class="border-b border-slate-800 bg-slate-950/80 text-xs uppercase font-mono text-slate-400">
+              <th class="p-4">Severity Level</th>
+              <th class="p-4">Impact Description</th>
+              <th class="p-4">Initial Response Target</th>
+              <th class="p-4">Update Cadence</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/60 text-xs sm:text-sm">
+            {severityLevelsEn.map((row) => (
+              <tr class="hover:bg-slate-800/30 transition-colors">
+                <td class="p-4 font-bold text-sky-400 whitespace-nowrap">{row.level}</td>
+                <td class="p-4 text-slate-300 max-w-md">{row.desc}</td>
+                <td class="p-4 font-mono font-bold text-emerald-400 whitespace-nowrap">{row.respTime}</td>
+                <td class="p-4 text-slate-400">{row.updateFreq}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="space-y-6">
+      <h2 class="text-2xl font-bold text-white">Availability Commitments by Service</h2>
+      <div class="space-y-4">
+        {servicesSLAEn.map((item) => (
+          <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="space-y-1.5 max-w-2xl">
+              <h3 class="text-base font-bold text-white">{item.service}</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">{item.desc}</p>
+              <div class="text-xs text-slate-500 pt-1">
+                <strong class="text-slate-400">Compensation:</strong> {item.penalizacion}
+              </div>
+            </div>
+            <div class="flex items-center space-x-6 shrink-0 pt-2 md:pt-0">
+              <div class="text-center">
+                <div class="text-xs text-slate-400">Availability</div>
+                <div class="text-xl font-mono font-bold text-emerald-400">{item.uptime}</div>
+              </div>
+              <div class="text-center">
+                <div class="text-xs text-slate-400">Critical Incident</div>
+                <div class="text-sm font-mono font-semibold text-sky-400">{item.respCritico}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</Layout>

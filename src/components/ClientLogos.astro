@@ -1,0 +1,47 @@
+---
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const clients = [
+  { name: 'Grupo Kino', logo: '/images/clients/grupokino.png' },
+  { name: 'Hartec', logo: '/images/clients/hartec.png' },
+  { name: 'Triskelion', logo: '/images/clients/triskelion.png' },
+  { name: 'ASV', logo: '/images/clients/asv.png' },
+  { name: 'Blen', logo: '/images/clients/blen.jpg' },
+  { name: 'GTMS', logo: '/images/clients/gtms.png' },
+  { name: 'InstaBeauty', logo: '/images/clients/instabeauty.png' },
+];
+---
+
+<section class="py-16 bg-slate-950/60 border-y border-slate-800/80">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-sky-400 mb-2">
+        {t('clients.title')}
+      </h2>
+      <p class="text-xl sm:text-2xl font-bold text-white">
+        {t('clients.subtitle')}
+      </p>
+    </div>
+
+    <!-- Logos Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6 items-center">
+      {clients.map((client) => (
+        <div class="bg-slate-900/60 hover:bg-slate-900 border border-slate-800/80 hover:border-slate-700/80 rounded-xl p-4 flex items-center justify-center h-20 transition-all duration-300 group">
+          <img
+            src={client.logo}
+            alt={client.name}
+            class="max-h-12 max-w-full object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+            loading="lazy"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
